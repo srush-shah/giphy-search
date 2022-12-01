@@ -1,7 +1,10 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
 
-const SearchBar = () => {
+const SearchBar = ({ isClicked, setIsClicked }) => {
+  const setClick = () => {
+    setIsClicked(!isClicked);
+  };
   return (
     <>
       <div className="flex items-center gap-3 w-full h-full">
@@ -13,7 +16,10 @@ const SearchBar = () => {
           />
         </div>
         <div className="w-1/5 h-full">
-          <button className="bg-black w-full h-full text-white rounded-lg">
+          <button
+            className="bg-black w-full h-full text-white rounded-lg"
+            onClick={setClick}
+          >
             Search
           </button>
         </div>
