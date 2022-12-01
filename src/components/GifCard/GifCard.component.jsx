@@ -13,7 +13,7 @@ const GifCard = (props) => {
         <div className="h-52 w-72">
           <img
             src={props.image}
-            alt={props.title}
+            alt={props.alt}
             className="w-full h-full rounded-xl"
           />
         </div>
