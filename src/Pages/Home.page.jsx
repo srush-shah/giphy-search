@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, CSSProperties } from "react";
+import { ClipLoader } from "react-spinners";
 import GifCard from "../components/GifCard/GifCard.component";
 
 //Component
@@ -8,6 +9,7 @@ const Home = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [inpValue, setInpValue] = useState("");
   const [gifData, setGifData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   // const requestGifData = async () => {
   //   const getGIFS = await axios.get(
@@ -39,11 +41,20 @@ const Home = () => {
               setInpValue={setInpValue}
               gifData={gifData}
               setGifData={setGifData}
+              loading={loading}
+              setLoading={setLoading}
             />
           </div>
           <div
+            className={`w-full h-96 px-96 py-40 ${
+              loading ? "block" : "hidden"
+            }`}
+          >
+            <ClipLoader className="w-full h-full" />
+          </div>
+          <div
             className={`w-full h-full flex flex-wrap ${
-              isClicked ? "" : "hidden"
+              loading ? "hidden " : isClicked ? "" : "hidden"
             }`}
           >
             {gifData.map((gif) => (

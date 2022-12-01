@@ -9,6 +9,8 @@ const SearchBar = ({
   setInpValue,
   gifData,
   setGifData,
+  loading,
+  setLoading,
 }) => {
   const inputRef = useRef(null);
   const handleClick = () => {
@@ -18,6 +20,10 @@ const SearchBar = ({
       setInpValue(value);
     }
     const getGifData = async () => {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
       const data = await axios.get(
         `https://api.giphy.com/v1/gifs/search?q=${value}&api_key=${process.env.REACT_APP_API_KEY}&limit=20`
       );

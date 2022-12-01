@@ -21,7 +21,7 @@ const GifCard = (props) => {
           <div className="flex flex-col w-2/3">
             <h3 className="text-lg font-medium">{props.title}</h3>
             <p className="text-xs text-gray-400 font-extralight">
-              {props.subtitle}
+              @{props.subtitle}
             </p>
           </div>
           <button onClick={setStarValue}>
