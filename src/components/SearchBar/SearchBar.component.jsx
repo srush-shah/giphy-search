@@ -11,8 +11,9 @@ const SearchBar = ({ isClicked, setIsClicked }) => {
         <div className="bg-gray-200 flex items-center justify-between rounded-lg w-5/6 h-full">
           <BiSearch className="w-1/6 h-2/5" />
           <input
-            className="bg-gray-200 w-full h-full rounded-lg"
+            className="bg-gray-200 w-full h-full rounded-lg border-none focus:outline-none"
             type="search"
+            placeholder="Article name or keywords..."
           />
         </div>
         <div className="w-1/5 h-full">
