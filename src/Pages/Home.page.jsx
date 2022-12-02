@@ -1,23 +1,33 @@
-import { useState, CSSProperties } from "react";
+import { useState } from "react";
 import { ClipLoader } from "react-spinners";
-import GifCard from "../components/GifCard/GifCard.component";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 //Component
 import SearchBar from "../components/SearchBar/SearchBar.component";
+import GifCard from "../components/GifCard/GifCard.component";
 
 const Home = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [inpValue, setInpValue] = useState("");
   const [gifData, setGifData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        navigate("/login");
+        console.log("Signed out successfully");
+        alert("Signed out successfully");
+      })
+      .catch((error) => {
+        // An error happened.
+        alert(error);
+      });
+  };
 
-  // const requestGifData = async () => {
-  //   const getGIFS = await axios.get(
-  //     `https://api.giphy.com/v1/gifs/search?q=${inpValue}&api_key=${process.env.REACT_APP_API_KEY}`
-  //   );
-  //   setGifData(getGIFS.data.data);
-  //   console.log(getGIFS.data);
-  // };
   if (gifData !== []) {
     console.log(gifData);
   }
@@ -28,6 +38,14 @@ const Home = () => {
           isClicked ? "h-max-fit" : "h-screen"
         }`}
       >
+        <div className="my-12">
+          <button
+            onClick={handleLogout}
+            className="bg-black text-white p-2 rounded"
+          >
+            Log Out
+          </button>
+        </div>
         <div
           className={`container mx-auto bg-white ${
             isClicked ? "w-2/3" : "w-1/2"
