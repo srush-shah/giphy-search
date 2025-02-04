@@ -17,7 +17,7 @@ Check out the app [here](https://giphy-search-srushti.vercel.app/)
 ![user home](/public/screenshots/user-home.png)
 
 ### Loading Animation while Searching
-![user search loading animation](/public/screenshots/user-search-loading.png)
+![user search loading animation](/public/screenshots/user-search-loading.jpg)
 
 ### Signed Out Error (Redirects to Login page after clicking OK)
 ![sign-out alert](/public/screenshots/sign-out-alert.png)
