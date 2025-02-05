@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 //Component
 import SearchBar from "../components/SearchBar/SearchBar.component";
 import GifCard from "../components/GifCard/GifCard.component";
+import { ToastContainer, toast } from "react-toastify";
 
 const Home = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -20,17 +21,17 @@ const Home = () => {
         // Sign-out successful.
         navigate("/login");
         console.log("Signed out successfully");
-        alert("Signed out successfully");
       })
       .catch((error) => {
         // An error happened.
-        alert(error);
+        toast(error, {position: 'top-center', theme:'colored', type:'error'});
       });
   };
 
-  if (gifData !== []) {
-    console.log(gifData);
-  }
+  useEffect(() => {
+    toast("Logged In Successfully!", {position: 'top-center', type: 'success', theme:'colored'})
+  },[])
+
   return (
     <>
       <div
@@ -86,6 +87,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };

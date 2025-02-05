@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const SignIn = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode, errorMessage);
+        toast(errorCode + ": " + errorMessage, {position: 'top-center', type: 'error', theme:'colored'})
       });
   };
 
@@ -99,6 +100,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </>
   );
 };
