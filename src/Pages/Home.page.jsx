@@ -19,7 +19,7 @@ const Home = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/login");
+        navigate("/login", {state: {logout:1}});
         console.log("Signed out successfully");
       })
       .catch((error) => {

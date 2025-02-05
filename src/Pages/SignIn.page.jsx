@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const {state} = useLocation()
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (state && state.logout) {
+      toast("Signed out successfully", {position: 'top-center', theme:'colored', type:'success'});
+  }
+  }, [state])
 
   const onLogin = async (e) => {
     e.preventDefault();
